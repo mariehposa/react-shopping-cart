@@ -11,15 +11,21 @@ import ShoppingCart from './components/ShoppingCart';
 
 function App() {
 	const [products] = useState(data);
-	const [cart, setCart] = useState([]);
+	const [cart, setCart] = useState(() => {
+		const items = JSON.parse(localStorage.getItem('cart'))
+
+		return items ? items : []
+	});
 
 	const addItem = item => {
 		setCart([...cart, item]);
+		localStorage.setItem("cart", JSON.stringify([...cart, item]))
 	};
 
 	const removeItem = id => {
 		 const ItemsToRemove = cart.filter( rItem => rItem.id !== id);
 		setCart([...ItemsToRemove]);
+		localStorage.setItem("cart", JSON.stringify(ItemsToRemove))
 	}
 
 	return (
