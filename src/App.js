@@ -22,7 +22,7 @@ function App() {
 
 			{/* Routes */}
 			<ProductContext.Provider value={{ products, addItem }}>
-				<Route exact path="/" component={products} />
+				<Route exact path="/" component={Products} />
 			</ProductContext.Provider>
 
 			<Route
